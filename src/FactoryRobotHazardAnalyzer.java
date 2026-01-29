@@ -12,13 +12,17 @@ public class FactoryRobotHazardAnalyzer {
         System.out.println("Enter Worker Density (1 - 20):");
         int workerDensity = scanner.nextInt();
 
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
 
         System.out.println("Enter Machinery State (Worn/Faulty/Critical):");
         String machineryState = scanner.nextLine();
 
-        System.out.println("Arm Precision: " + armPrecision);
-        System.out.println("Worker Density: " + workerDensity);
-        System.out.println("Machinery State: " + machineryState);
+        double machineRiskFactor = 1.0;
+
+        double hazardRisk =
+                ((1.0 - armPrecision) * 15.0)
+                        + (workerDensity * machineRiskFactor);
+
+        System.out.println("Robot Hazard Risk Score: " + hazardRisk);
     }
 }
